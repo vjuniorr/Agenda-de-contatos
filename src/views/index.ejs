@@ -1,16 +1,34 @@
-<%- include('includes/head.ejs'); %>
+<%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
 
-<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
 
-  <section class="container">
-    <h1> <%= umaVariavelLocal %> </h1>
+    <div class="col-lg-8 my-2">
+      <h1 class="text-center my-2">Agenda</h1>
+      <p class="text-center lead">Contatos salvos</p>
+    </div>
 
-    <form action="/" method="post">
-      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-      <label>Cliente</label>
-      <input type="text" name="cliente">
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-danger">Contato não encontrado</div>
+      </div>
+    </div>
 
-  <%- include('includes/footer.ejs'); %>
+    <div class="responsive-table">
+      <table class="table table-striped my-2">
+        <tr>
+          <td>Valdemi</td>
+          <td>Junior</td>
+          <td>9999999999</td>
+          <td>valdemijunior16@gmail.com</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer.ejs') %>
