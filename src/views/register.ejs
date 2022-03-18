@@ -9,11 +9,13 @@
       <h1 class="text-center my-2">Cadastro</h1>
       <p class="text-center lead">Faça sua conta preenchendo os campos abaixo</p>
 
+      <%- include('includes/messages'); %>
+
       <div class="row">
         <div class="col-lg">
-          <h4>Login</h4>
+          <h4>Cadastro</h4>
   
-          <form action="/login/register" method="POST">
+          <form action="/register/register" method="POST">
             <input type="hidden" name="_csrf" value=<%= csrfToken%>>
             <div class="mb-3">
               <label class="form-label">Email</label>
@@ -22,10 +24,10 @@
   
             <div class="mb-3">
               <label class="form-label">Senha</label>
-              <input type="password" class="form-control" name="senha">
+              <input type="password" class="form-control" name="password">
             </div>
             <button type="submit" class="btn btn-primary">Criar conta</button>
-            <button type="submit" class="btn btn-outline-secondary">Login</button>
+            <button type="submit" class="btn btn-outline-secondary" formaction="/login/index" formmethod="get">Login</button>
 
           </form>
   

@@ -13,5 +13,6 @@ route.get('/login/index', loginController.index);
 
 // Rotas de registro
 route.get('/register/index', registerController.index);
+route.post('/register/register', registerController.register);
 
 module.exports = route;

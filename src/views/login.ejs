@@ -9,11 +9,14 @@
       <h1 class="text-center my-2">Login</h1>
       <p class="text-center lead">Faça seu login</p>
 
+      <%- include('includes/messages'); %>
+
       <div class="row">
         <div class="col-lg">
           <h4>Login</h4>
   
           <form action="/login/login" method="POST">
+            
             <input type="hidden" name="_csrf" value=<%= csrfToken%>>
             <div class="mb-3">
               <label class="form-label">Email</label>
@@ -25,7 +28,7 @@
               <input type="password" class="form-control" name="senha">
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
-            <button type="submit" class="btn btn-outline-secondary">Criar conta</button>
+            <button type="submit" class="btn btn-outline-secondary" formaction="/register/index" formmethod="get">Criar conta</button>
 
           </form>
   
