@@ -26,11 +26,7 @@ class Register {
         const salt = bcrypt.genSaltSync();
         this.body.password = bcrypt.hashSync(this.body.password, salt);
 
-        try{
-            this.user = await RegisterModel.create(this.body);
-        }catch(e) {
-           console.log(e);
-        }
+        this.user = await RegisterModel.create(this.body);
     }
 
     async userExists() {
@@ -45,8 +41,6 @@ class Register {
         if(this.body.password.length < 3 || this.body.password.length > 50) {
             this.errors.push('Senha deve ter entre 3 e 50 caracteres');
         }
-
-
     }
 
     cleanUp() {
