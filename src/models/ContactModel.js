@@ -30,11 +30,22 @@ class Contact {
         return user;
     }
 
+    async buscaContatos() {
+        const contatos = await ContactModel.find().sort({ criadoEm: -1});
+        return contatos;
+    }
+
     async edit(id) {
         if(typeof id !== 'string') return;
         this.valida();
         if(this.errors.length > 0) return;
         this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true });
+    }
+
+    async delete(id) {
+        if(typeof id !== 'string') return;
+        const contact = await ContactModel.findOneAndDelete({ _id: id });
+        return contact;
     }
 
     valida() {

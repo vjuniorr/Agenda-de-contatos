@@ -1,30 +1,60 @@
 <%- include('includes/head.ejs') %>
-<%- include('includes/nav.ejs') %>
+  <%- include('includes/nav.ejs') %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-2"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
 
-    <div class="col-lg-8 my-2">
-      <h1 class="text-center my-2">Agenda</h1>
-      <p class="text-center lead">Contatos salvos</p>
+        <div class="col-lg-8 my-2">
+          <h1 class="text-center my-2">Agenda</h1>
+          <p class="text-center lead">Sua plataforma de contatos em nuvem</p>
+        </div>
+
+        <%- include('includes/messages')%>
+
+          <% if(user) { %>
+            <div class="responsive-table">
+              <% if(contacts.length> 0) { %>
+                <table class="table table-striped my-2">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Sobrenome</th>
+                      <th>Telefone</th>
+                      <th>E-mail</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <% contacts.forEach(contact=> { %>
+                    <tr>
+                      <td>
+                        <%= contact.nome %>
+                      </td>
+                      <td>
+                        <%= contact.sobrenome %>
+                      </td>
+                      <td>
+                        <%= contact.telefone %>
+                      </td>
+                      <td>
+                        <%= contact.email %>
+                      </td>
+                      <td><a href="/contact/index/<%= contact._id %>"><button type="submit" class="btn btn-primary">Editar</button></a></td>
+                      <td><a class="text-danger" href="/contact/delete/<%= contact._id %>"><button type="submit" class="btn btn-danger">Excluir</button></a></td>
+                    </tr>
+                    <% }); %>
+                </table>
+                <% } else { %>
+                  <img src="empty.svg" class="rounded mx-auto d-block" alt="Responsive image">
+                  <p class="text-center">Nenhum contato cadastrado</p>
+                  <% } %>
+            </div>
+            <% } else { %>
+              <img src="wellcome.svg" class="rounded mx-auto d-block" alt="Responsive image">
+              <% } %>
+
+                <div class="col-lg-2"></div>
+      </div>
     </div>
 
-    <%- include('includes/messages')%>
-
-    <div class="responsive-table">
-      <table class="table table-striped my-2">
-        <tr>
-          <td>Valdemi</td>
-          <td>Junior</td>
-          <td>9999999999</td>
-          <td>valdemijunior16@gmail.com</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="col-lg-2"></div>
-  </div>
-</div>
-
-<%- include('includes/footer.ejs') %>
+    <%- include('includes/footer.ejs') %>
